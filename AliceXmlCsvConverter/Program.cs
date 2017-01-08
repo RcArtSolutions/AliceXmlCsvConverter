@@ -33,18 +33,19 @@ namespace Rca.AxccApp
 
             if (!File.Exists(path))
             {
-                Console.WriteLine("XML-Datei unter folgenden Pfad nicht gefunden, Programm wird beendet.");
+                Console.WriteLine("XML-Datei unter folgenden Pfad nicht gefunden, Programm wird beendet:");
                 Console.WriteLine(path);
-                Thread.Sleep(5500);
+                Thread.Sleep(4000);
             }
             else
             {
-                Console.WriteLine("XML-Datei unter folgenden Pfad gefunden.");
+                Console.WriteLine("XML-Datei unter folgenden Pfad gefunden:");
                 Console.WriteLine(path);
                 Console.WriteLine();
                 Console.WriteLine("Zum Starten beliebige Taste drücken.");
                 Console.ReadKey();
 
+                Console.WriteLine();
                 Console.WriteLine("XML-Datei wird in CSV-Datei konvertiert...");
                 //string path = @"F:\LocalProjects\Git\AliceXmlCsvConverter\Data\ArticleList_PM_105094_ORG.xml";
 
@@ -52,13 +53,13 @@ namespace Rca.AxccApp
 
                 var sw = new Stopwatch();
                 sw.Start();
-
                 converter.ReadXml(path);
                 converter.GenerateCsv(path + ".csv");
-
                 sw.Stop();
 
+                Console.WriteLine();
                 Console.WriteLine("Konvertierung nach {0} Sekunden beendet.", (double)sw.ElapsedMilliseconds / 1000);
+                Console.WriteLine();
                 Console.WriteLine("CSV-Datei wurde unter folgenden Pfad gespeichert:");
                 Console.WriteLine(path + ".csv");
 
